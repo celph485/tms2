@@ -13,6 +13,8 @@ public class App {
         var positions = positionService.getPositions();
         var nicerGlobeService = NicerGlobeService.getInstance(configData);
         nicerGlobeService.sendRequests(positions);
+        var aditiTrackingService = AditiTrackingService.getInstance(configData);
+        aditiTrackingService.sendRequests(positions);
         log.info("Done");
     }
 }
