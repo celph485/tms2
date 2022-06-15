@@ -104,8 +104,4 @@ class ConfigData {
     boolean canSendThisPositionToAditiTrackingServer(final Position position){
         return this.deviceImeiMap.containsKey(position.getDeviceId());
     }
-
-    int getJobIntervalInSeconds(){
-        return this.config.getInt(ConfigKey.JOB_INTERVAL_IN_SECONDS.name(),0);
-    }
 }

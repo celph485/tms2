@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 enum ConfigKey {
-    JOB_INTERVAL_IN_SECONDS,
     TC_USER,
     TC_PASS,
     TC_POSITION_URL,
