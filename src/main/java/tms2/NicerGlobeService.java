@@ -29,7 +29,7 @@ class NicerGlobeService {
 
     private void sendRequest(final Position position){
         try{
-            log.debug("Sending position: {}",position);
+            log.info("Sending position: {}",position);
             var reqObj = NicerGlobeRequestFactory.createRequest(
                 position,
                 configData.getVehicleRegNoForPosition(position),
@@ -46,8 +46,8 @@ class NicerGlobeService {
 
             var response = HttpClient.newHttpClient().send(req, HttpResponse.BodyHandlers.ofString());
             log.info("Response: {}",response.body());
-            log.info("Sleeping for {} seconds", configData.getNicerGlobeRequestIntervalInSeconds());
-            TimeUnit.SECONDS.sleep(configData.getNicerGlobeRequestIntervalInSeconds());
+            log.info("Sleeping for {} milliseconds", configData.getNicerGlobeRequestIntervalInMilliSeconds());
+            TimeUnit.MILLISECONDS.sleep(configData.getNicerGlobeRequestIntervalInMilliSeconds());
         }catch (Exception e){
             log.error("Error while sending request to nicer globe server",e);
         }

@@ -85,8 +85,8 @@ class ConfigData {
         return this.deviceRegistrationMap.containsKey(position.getDeviceId());
     }
 
-    int getNicerGlobeRequestIntervalInSeconds(){
-        return this.config.getInt(ConfigKey.NICER_GLOBE_REQUEST_INTERVAL_IN_SECONDS.name(),0);
+    int getNicerGlobeRequestIntervalInMilliSeconds(){
+        return this.config.getInt(ConfigKey.NICER_GLOBE_REQUEST_INTERVAL_IN_MILLS.name(),500);
     }
 
     String getImeiForPosition(final Position position){
@@ -97,8 +97,8 @@ class ConfigData {
         return this.config.getString(ConfigKey.ADITI_TRACKING_SERVER_URL.name());
     }
 
-    int getAditiTrackingRequestIntervalInSeconds(){
-        return this.config.getInt(ConfigKey.ADITI_TRACKING_REQUEST_INTERVAL_IN_SECONDS.name(),0);
+    int getAditiTrackingRequestIntervalInMilliSeconds(){
+        return this.config.getInt(ConfigKey.ADITI_TRACKING_REQUEST_INTERVAL_IN_MILLS.name(),500);
     }
 
     boolean canSendThisPositionToAditiTrackingServer(final Position position){

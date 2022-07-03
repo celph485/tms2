@@ -30,7 +30,7 @@ class AditiTrackingService {
 
     private void sendRequest(final Position position){
         try{
-            log.debug("Sending position: {}",position);
+            log.info("Sending position: {}",position);
             var reqObj = AditiTrackingRequestFactory.createRequest(
                 position,
                 configData.getImeiForPosition(position)
@@ -46,8 +46,8 @@ class AditiTrackingService {
 
             var response = HttpClient.newHttpClient().send(req, HttpResponse.BodyHandlers.ofString());
             log.info("Response: {}",response.body());
-            log.info("Sleeping for {} seconds", configData.getAditiTrackingRequestIntervalInSeconds());
-            TimeUnit.SECONDS.sleep(configData.getAditiTrackingRequestIntervalInSeconds());
+            log.info("Sleeping for {} milliseconds", configData.getAditiTrackingRequestIntervalInMilliSeconds());
+            TimeUnit.MILLISECONDS.sleep(configData.getAditiTrackingRequestIntervalInMilliSeconds());
         }catch (Exception e){
             log.error("Error while sending request to Aditi tracking server",e);
         }

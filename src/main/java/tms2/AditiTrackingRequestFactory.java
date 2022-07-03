@@ -10,11 +10,13 @@ import java.time.format.DateTimeFormatter;
 class AditiTrackingRequestFactory {
 
     static AditiTrackingRequest createRequest(final Position position, final String imeiNo){
+        final String latitude = String.format("%.4f", position.getLatitude());
+        final String longitude = String.format("%.4f", position.getLongitude());
         return AditiTrackingRequest.builder()
             .imeiNo(imeiNo)
             .time(convertToIstDateTimeString(position.getDeviceTime()))
-            .lattitude(String.valueOf(position.getLatitude()))
-            .longitude(String.valueOf(position.getLongitude()))
+            .lattitude(latitude)
+            .longitude(longitude)
             .speed(String.valueOf(position.getSpeed()))
             .build();
     }

@@ -9,6 +9,7 @@ c:\Users\f3931\apps\java\jdk-18.0.1.1\bin\java -jar tms2\target\tms2-1.0.0-SNAPS
 properties file must contain following data
 
 TC_USER=
+
 TC_PASS=
 TC_POSITION_URL=
 NICER_GLOBE_SERVER_URL=

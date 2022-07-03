@@ -15,8 +15,35 @@
             <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-
-    <root level="debug">
+    <appender name="ADITI" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>tms2.aditi.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms2.aditi.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="NICER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>tms2.nicerglobe.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms2.nicerglobe.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="tms2.AditiTrackingService" level="INFO" additivity="true">
+        <appender-ref ref="ADITI"/>
+    </logger>
+    <logger name="tms2.NicerGlobeService" level="INFO" additivity="true">
+        <appender-ref ref="NICER"/>
+    </logger>
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
