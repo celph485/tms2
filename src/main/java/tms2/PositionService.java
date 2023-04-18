@@ -5,13 +5,12 @@ import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Slf4j
@@ -23,19 +22,16 @@ class PositionService {
     private PositionService(final ConfigData configData) {
         this.request = HttpRequest.newBuilder()
             .uri(URI.create(configData.getPositionUrl()))
+            .header("Authorization", basicAuth(configData.getTcUser(), configData.getTcPass()))
             .GET()
             .build();
 
         this.httpClient = HttpClient.newBuilder()
-            .authenticator(new Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(configData.getTcUser(), configData.getTcPass().toCharArray());
-                }
-            })
             .build();
     }
-
+    private static String basicAuth(String username, String password) {
+        return "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
+    }
     static PositionService getInstance(final ConfigData configData){
         return new PositionService(configData);
     }
