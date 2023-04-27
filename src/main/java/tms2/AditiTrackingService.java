@@ -18,6 +18,7 @@ class AditiTrackingService {
     }
 
     static AditiTrackingService getInstance(final ConfigData configData){
+        log.info("Creating AditiTrackingService object");
         return new AditiTrackingService(configData);
     }
 

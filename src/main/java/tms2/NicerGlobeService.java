@@ -17,6 +17,7 @@ class NicerGlobeService {
     }
 
     static NicerGlobeService getInstance(final ConfigData configData){
+        log.info("Creating NicerGlobeService object");
         return new NicerGlobeService(configData);
     }
 

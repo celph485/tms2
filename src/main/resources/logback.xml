@@ -37,11 +37,25 @@
             <pattern>%d %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="FRETRON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>tms2.fretron.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tms2.fretron.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <logger name="tms2.AditiTrackingService" level="INFO" additivity="true">
         <appender-ref ref="ADITI"/>
     </logger>
     <logger name="tms2.NicerGlobeService" level="INFO" additivity="true">
         <appender-ref ref="NICER"/>
+    </logger>
+    <logger name="tms2.FreTronService" level="INFO" additivity="true">
+        <appender-ref ref="FRETRON"/>
     </logger>
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>

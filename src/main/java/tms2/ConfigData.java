@@ -104,4 +104,28 @@ class ConfigData {
     boolean canSendThisPositionToAditiTrackingServer(final Position position){
         return this.deviceImeiMap.containsKey(position.getDeviceId());
     }
+
+    String getFreTronTrackingServerUrl() {
+        return this.config.getString(ConfigKey.FRE_TRON_TRACKING_SERVER_URL.name());
+    }
+
+    String getFreTronTrackingServerVendor() {
+        return this.config.getString(ConfigKey.FRE_TRON_TRACKING_SERVER_VENDOR.name());
+    }
+
+    boolean canSendThisPositionToFreTronTrackingServer(final Position position){
+        return this.deviceImeiMap.containsKey(position.getDeviceId());
+    }
+
+    boolean isNiceGlobeEnabled(){
+        return this.config.getBoolean(ConfigKey.ENABLE_NICER_GLOBE.name());
+    }
+
+    boolean isAditiTrackingEnabled(){
+        return this.config.getBoolean(ConfigKey.ENABLE_ADITI_TRACKING.name());
+    }
+
+    boolean isFreTronTrackingEnabled(){
+        return this.config.getBoolean(ConfigKey.ENABLE_FRE_TRON_TRACKING.name());
+    }
 }
